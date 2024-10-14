@@ -52,5 +52,7 @@ namespace RoomInspectionApplication
         public static InspectionType FireExtinguisher = new InspectionType("Brandsläckare / Brandfilt", "Kontrollera att de finns där de ska vara, kontrollera datummärkning");
         public static InspectionType Water = new InspectionType("Toaletter och vaskar", "Kontrollera att toaletterna spolar som de ska och att det inte droppar från kranarna");
         public static InspectionType Other = new InspectionType("Övrigt", "Övrigt som verkar behöva åtgärdas");
+
+        public InspectionType[] AllInspections => new InspectionType[] { Doors, Windows, Walls, Sockets, Lights, Whiteboard, Projector, FireExtinguisher, Water, Other };
     }
 }
