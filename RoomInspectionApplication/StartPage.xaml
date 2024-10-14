@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="RoomInspectionApplication.StartPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RoomInspectionApplication"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="StartNew" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" BorderBrush="Black" Click="StartNew_Click">
+            <Viewbox>
+                <TextBlock Text="Påbörja ny inspektion"/>
+            </Viewbox>
+        </Button>
+        <Button x:Name="Load" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"  BorderBrush="Black" Click="Load_Click" IsEnabled="False">
+            <Viewbox>
+                <TextBlock Text="Fortsätt tidigare inspektion"/>
+            </Viewbox>
+        </Button>
+    </Grid>
+</Page>
