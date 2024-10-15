@@ -21,24 +21,11 @@ namespace RoomInspectionApplication
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class StartPage : Page
+    public sealed partial class RoomSelector : Page
     {
-        public StartPage()
+        public RoomSelector()
         {
             this.InitializeComponent();
-        }
-
-
-
-        private void StartNew_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(RoomSelector), new RoomInspectionModel());
-
-        }
-
-        private void Load_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

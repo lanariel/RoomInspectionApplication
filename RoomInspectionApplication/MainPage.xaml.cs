@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -22,9 +24,71 @@ namespace RoomInspectionApplication
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private RoomInspectionModel _model;
+
         public MainPage()
         {
             this.InitializeComponent();
         }
+
+
+        private void MainNavigation_Loaded(object sender, RoutedEventArgs e)
+        {
+            EnableMainNavigation(false); 
+            ContentFrame.Navigate(typeof(StartPage));
+        }
+
+
+        private void EnableMainNavigation(bool enable)
+        {
+            MainNavigation.IsPaneVisible = enable;
+            MainNavigation.IsPaneToggleButtonVisible = enable;
+            MainNavigation.IsPaneOpen = enable;
+        }
+
+        private void ContentFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+            if (e.SourcePageType != typeof(StartPage) && e.Parameter is RoomInspectionModel model && _model == null)
+            {
+                _model = model;
+                EnableMainNavigation(true);
+                MainNavigation.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
+            }
+
+            if (_model != null)
+            {
+                MainNavigation.MenuItems.Clear();
+                foreach (RoomName value in Enum.GetValues(typeof(RoomName)))
+                {
+                    var description = value.GetDescription();
+                    if (description != null)
+                    {
+                        NavigationViewItemHeader header = new NavigationViewItemHeader
+                        {
+                            Content = description.Description
+                        };
+                        MainNavigation.MenuItems.Add(header);
+
+                        NavigationViewItem inspection = new NavigationViewItem()
+                        {
+                            Content = "Inspektion"
+                        };
+                        MainNavigation.MenuItems.Add(inspection);
+
+                        NavigationViewItem rapport = new NavigationViewItem()
+                        {
+                            Content = "Sammanställning";
+                        };
+                        MainNavigation.MenuItems.Add(rapport);
+
+                        MainNavigation.MenuItems.Add(new NavigationViewItemSeparator());
+                    }
+                    
+                }
+            }
+        }
+
+
+        
     }
 }

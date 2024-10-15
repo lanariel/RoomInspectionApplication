@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="RoomInspectionApplication.MainPage"
+    x:Class="RoomInspectionApplication.RoomSelector"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:RoomInspectionApplication"
@@ -9,10 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <NavigationView x:Name="MainNavigation" IsSettingsVisible="False" Loaded="MainNavigation_Loaded" IsBackButtonVisible="Collapsed" PaneDisplayMode="LeftMinimal">
-
-            <Frame x:Name="ContentFrame" Navigating="ContentFrame_Navigating" />
-        </NavigationView>
 
     </Grid>
 </Page>

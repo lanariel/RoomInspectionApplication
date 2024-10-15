@@ -1,5 +1,8 @@
 ﻿
+using System;
 using System.ComponentModel;
+using System.Linq;
+using System.Reflection;
 
 namespace RoomInspectionApplication
 {
@@ -28,6 +31,24 @@ namespace RoomInspectionApplication
         Stora_köket,
         [Description("Stora badrummet")]
         Stora_badrummet
+    }
+
+    public static class RoomNameHelper
+    {
+        public static DescriptionAttribute GetDescription(this RoomName enumInput)
+        {
+
+            Type typeOfEnum = typeof(RoomName); //this will be typeof( MyEnum )
+
+            //here is the problem, GetField takes a string
+            // the .ToString() on enums is very slow
+            FieldInfo fi = typeOfEnum.GetField(enumInput.ToString());
+
+            //get the attribute from the field
+            return fi.GetCustomAttributes(typeof(DescriptionAttribute), false)
+                    .FirstOrDefault() //Linq method to get first or null
+                as DescriptionAttribute; //use as operator to convert
+        }
     }
 
     public class InspectionType
