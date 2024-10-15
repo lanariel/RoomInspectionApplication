@@ -77,7 +77,7 @@ namespace RoomInspectionApplication
 
                         NavigationViewItem rapport = new NavigationViewItem()
                         {
-                            Content = "Sammanställning";
+                            Content = "Sammanställning"
                         };
                         MainNavigation.MenuItems.Add(rapport);
 
